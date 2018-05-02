@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
 const moment = require('moment');
-require('console.table');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -478,7 +477,6 @@ router.get('/:subdomain/candidacy', isAuthenticated, isAdmin, (req, res) => {
 
 router.post('/:subdomain', isAuthenticated, (req, res) => {
   if (req.params.subdomain === 'admin') {
-	  // console.log(req.body);
 	  var body = {
 		  phone: req.body.phone,
 		  personalInfo: req.body.personalInfo,
@@ -486,7 +484,6 @@ router.post('/:subdomain', isAuthenticated, (req, res) => {
 		  position: req.body.position
 	  }
 
-	  // console.log(body);
 	  request.post(
 	      process.env.ADDR+'/admin/register',
 	      { json: body},

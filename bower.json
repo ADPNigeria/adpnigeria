@@ -31,6 +31,7 @@
     "fastclick": "^1.0.6",
     "animate.css": "^3.5.2",
     "popper.js": "^1.12.9",
-    "chart.js": "^2.7.1"
+    "chart.js": "^2.7.1",
+    "bootstrap": "^4.1.1"
   }
 }

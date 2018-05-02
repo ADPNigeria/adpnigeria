@@ -1,0 +1,34 @@
+
+<div class="container mt-5">
+    <div class="d-flex flex-column">
+        <h3>ADP Latest News and Blogs</h3>
+        <div id="items" class="d-flex w-100 flex-row flex-wrap justify-content-between">
+
+        </div>
+    </div>
+</div>
+<script>
+document.onreadystatechange = function () {
+    if(document.readyState === 'complete'){
+        $.get('/blog/getThem', function (data) {
+            parser = new DOMParser();
+            xmlDoc = parser.parseFromString(data,"text/xml");
+            var rss = xmlDoc.getElementsByTagName('item')
+            var whereItem = document.getElementById('items')
+            console.log(rss)
+            for(let i = 0; i < rss.length; i++){
+                var newMe = document.createElement('div')
+        var finMe = rss[i].childNodes
+        finImg = finMe[finMe.length - 2]
+            getImg = parser.parseFromString(finImg.textContent, "text/html")
+        theImage = getImg.getElementsByTagName('figure')[0]
+        theImage = theImage.firstChild
+
+        newMe.innerHTML = '<div class="card m-4" style="width: 18rem;"><img width: 18rem class="card-img-top" src="'+theImage.getAttribute('src')+'" alt="Card image cap"><div class="card-body"><p class="card-text">'+rss[i].childNodes[1].textContent+' </p>  <a href="#" class="btn btn-primary">Go somewhere</a></div></div>'
+                whereItem.appendChild(newMe)
+            }
+        });
+
+    }
+}
+</script>

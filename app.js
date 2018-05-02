@@ -33,6 +33,7 @@ var dashboardController = require('./controllers/dashboardController');
 var donateController = require('./controllers/donateController');
 var loginController = require('./controllers/loginController');
 var statesController = require('./controllers/statesController');
+var blogSection = require('./controllers/blogSection')
 
 
 const app = express();
@@ -146,6 +147,7 @@ app.use('/myprefix', tokenFun, dashboardController);
 app.use('/donate', tokenFun, donateController);
 app.use('/login', tokenFun, loginController);
 app.use('/states', tokenFun, statesController);
+app.use('/blog', tokenFun, blogSection)
 // app.use('/state', tokenFun, statesController);
 
 
